@@ -16,6 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,400;1,700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,400;1,700&display=swap");
     </style>
@@ -33,13 +34,14 @@
           <h1 class="cityName">Tehran</h1>
           <div class="cityInfo">
             <ul>
-              <li>Sunday 13:10, few clouds</li>
-              <li>Humidity: 83%, Wind: 2.24km/h</li>
+              <li> <span id="day">Sunday</span>  <span id="hour">13</span>  <span id="minute"></span> </li>
+              <li id="description">few clouds</li>
+              <li>Humidity: <span id="humidity"></span>, <span id="wind">Wind: 2.24km/h</span> </li>
             </ul>
           </div>
         </div>
         <div class="clmn2">
-          <img src="#" alt="" /> <span class="tempreture">11</span>
+          <img src="#" alt="" /> <span class="tempreture" id="temp">11</span>
           <span class="unit">°C</span>
         </div>
       </div>
@@ -47,4 +49,5 @@
     </div>
     
   </body>
+  <script src="Src/index.js"></script>
 </html>
