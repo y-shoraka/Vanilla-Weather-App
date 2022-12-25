@@ -19,7 +19,7 @@ body{
 }
 
 .cityName {
-
+ text-transform: capitalize;
     font-family: 'Merriweather', serif;
     font-style: italic;
     font-size: 38px;
