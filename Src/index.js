@@ -13,6 +13,7 @@ document.querySelector("#hour").innerHTML = hours+":" ;
  }
 document.querySelector("#minute").innerHTML = date.getMinutes();
 
+
 function DisplayTemp(response) {
   document.querySelector("#temp").innerHTML = Math.round(
     response.data.temperature.current
@@ -20,7 +21,8 @@ function DisplayTemp(response) {
   document.querySelector("#description").innerHTML = response.data.condition.description;
   document.querySelector("#humidity").innerHTML = response.data.temperature.humidity+"%";
   document.querySelector("#wind").innerHTML = `  Wind: ${response.data.wind.speed}Km/hr` ; 
-  
+  document.querySelector("#img").setAttribute("src" , response.data.condition.icon_url)
+  console.log(response);
 
 }
 
