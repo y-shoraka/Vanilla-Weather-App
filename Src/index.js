@@ -23,11 +23,11 @@ function convertToC() {
 document.querySelector("#F").addEventListener("click", convertToF);
 document.querySelector("#C").addEventListener("click", convertToC);
 function displayForecast(response) {
-//console.log(response.data.daily)
+console.log(response.data.daily);
 
 }
 function DisplayTemp(response) {
-  let coordinates = response.data.coordinates;
+  
   celsius = response.data.temperature.current;
   document.querySelector("#temp").innerHTML = Math.round(
     response.data.temperature.current
@@ -42,11 +42,13 @@ function DisplayTemp(response) {
   document
     .querySelector("#img")
     .setAttribute("src", response.data.condition.icon_url);
-  let lon = coordinates.longitude;
-  let lat = coordinates.latitude;
+  
+  let coordinates = response.data.coordinates;
+  let lon = response.data.coordinates.longitude;
+  let lat = response.data.coordinates.latitude;
   let ApiKey = "082d3d02ffdb12f2fd9b259e2ced1d0d";
   let ApiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${ApiKey}&units=metric`;
-  axios(ApiKey).then(displayForecast);
+  axios(ApiUrl).then(displayForecast);
   let days = ["Sun", "Mon", "Tue"];
   let weatherForecast = document.querySelector(".weather-forecast");
   let weatherFroecastHTML = "";
