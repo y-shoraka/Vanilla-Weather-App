@@ -57,4 +57,13 @@ function submitHandler() {
   search(searchedCity);
 }
 let celsius = null ; 
-document.querySelector("#submit").addEventListener("submit", submitHandler);
+document.querySelector("#submit").addEventListener("click", submitHandler);
+
+
+var input = document.getElementById("#searchInput");
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("#submit").click();
+  }
+});
