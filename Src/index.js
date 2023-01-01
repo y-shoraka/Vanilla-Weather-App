@@ -51,14 +51,12 @@ function search(city) {
   axios.get(ApiUrl).then(DisplayTemp);
 }
 
-function submitHandler() {
+function submitHandler(event) {
+  event.preventDefault();
   let searchedCity = document.querySelector("#searchInput").value;
-  document.querySelector(".cityName").innerHTML = searchedCity ; 
+   
   search(searchedCity);
+  document.querySelector(".cityName").innerHTML = searchedCity ;
 }
 let celsius = null ; 
-document.querySelector("#submit").addEventListener("click", submitHandler);
-
-
-let input = document.getElementById("#searchInput");
-input.addEventListener("submit",submitHandler);
+document.querySelector("#searchForm").addEventListener("submit", submitHandler);

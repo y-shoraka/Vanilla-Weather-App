@@ -40,7 +40,7 @@ body{
     position: relative;
     top: -34px;
 }
-.header input {
+.header .searchBox {
     width: 40vw;
 }
 .cityInfo ul{
