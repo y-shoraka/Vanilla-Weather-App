@@ -57,4 +57,4 @@ function submitHandler() {
   search(searchedCity);
 }
 let celsius = null ; 
-document.querySelector("#submit").addEventListener("click", submitHandler);
+document.querySelector("#submit").addEventListener("submit", submitHandler);
