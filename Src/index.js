@@ -22,12 +22,45 @@ function convertToC() {
 
 document.querySelector("#F").addEventListener("click", convertToF);
 document.querySelector("#C").addEventListener("click", convertToC);
-function displayForecast(response) {
-console.log(response.data.daily);
+function updateForecast(response) {
+  console.log(response.data.daily);
+  let forecastDay = response.data.daily;
+  function day(forecastDay) {
+    let date = new Date(forecastDay.time * 1000);
+    let day = date.getDay();
+    let weekDays = ["Sun", "Mon", "Tue", "wed", "Thur", "Fri", "Sat"];
+    return weekDays[day];
+  }
 
+  // let days = ["Sun", "Mon", "Tue"];
+  let weatherForecast = document.querySelector(".weather-forecast");
+  let weatherFroecastHTML = "";
+  forecastDay.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      weatherFroecastHTML += `<div class="weatherColumn">
+  <div class="date">${day(forecastDay)}</div>
+  <div class="weather-icon"><img src="${
+    forecastDay.condition.icon_url
+  }" alt=""></div>
+  <div class="weather-max-min"><span class="minTemp" >${Math.round(
+    forecastDay.temperature.minimum
+  )}° </span>   <span class="maxTemp">  ${Math.round(
+        forecastDay.temperature.maximum
+      )}°</span></div>
+</div>`;
+    }
+  });
+  weatherForecast.innerHTML = weatherFroecastHTML;
+}
+
+function displayForecast(city) {
+  let ApiKey = "d622ab03edofbbtc80f362a442d6777c";
+  let ApiUrls = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${ApiKey}&units=metric`;
+  axios(ApiUrls).then(updateForecast);
 }
 function DisplayTemp(response) {
-  
+  console.log(response);
+  displayForecast(response.data.city);
   celsius = response.data.temperature.current;
   document.querySelector("#temp").innerHTML = Math.round(
     response.data.temperature.current
@@ -42,24 +75,6 @@ function DisplayTemp(response) {
   document
     .querySelector("#img")
     .setAttribute("src", response.data.condition.icon_url);
-  
-  let coordinates = response.data.coordinates;
-  let lon = response.data.coordinates.longitude;
-  let lat = response.data.coordinates.latitude;
-  let ApiKey = "082d3d02ffdb12f2fd9b259e2ced1d0d";
-  let ApiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${ApiKey}&units=metric`;
-  axios(ApiUrl).then(displayForecast);
-  let days = ["Sun", "Mon", "Tue"];
-  let weatherForecast = document.querySelector(".weather-forecast");
-  let weatherFroecastHTML = "";
-  days.forEach(function (days) {
-    weatherFroecastHTML += `<div class="weatherColumn">
-  <div class="date">${days}</div>
-  <div class="weather-icon"><img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png" alt=""></div>
-  <div class="weather-max-min"><span class="maxTemp" > 18° </span>   <span class="minTemp">  12°</span></div>
-</div>`;
-  });
-  weatherForecast.innerHTML = weatherFroecastHTML;
 }
 
 function search(city) {
