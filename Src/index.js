@@ -9,24 +9,26 @@ if (hours < 10) {
 document.querySelector("#hour").innerHTML = hours + ":";
 let minutes = date.getMinutes();
 if (minutes < 10) {
-  minutes ="0"+ minutes;
+  minutes = "0" + minutes;
 }
 document.querySelector("#minute").innerHTML = date.getMinutes();
-function convertToF(){
-    let F = (celsius * 9/5) + 32 ;
-    document.querySelector("#temp").innerHTML = Math.round(F);
-
+function convertToF() {
+  let F = (celsius * 9) / 5 + 32;
+  document.querySelector("#temp").innerHTML = Math.round(F);
 }
-function convertToC(){
-    
-    document.querySelector("#temp").innerHTML =Math.round(celsius)  ; 
+function convertToC() {
+  document.querySelector("#temp").innerHTML = Math.round(celsius);
 }
 
-document.querySelector("#F").addEventListener("click" , convertToF);
-document.querySelector("#C").addEventListener("click" , convertToC);
+document.querySelector("#F").addEventListener("click", convertToF);
+document.querySelector("#C").addEventListener("click", convertToC);
+function displayForecast(response) {
+//console.log(response.data.daily)
 
+}
 function DisplayTemp(response) {
-    celsius = response.data.temperature.current;
+  let coordinates = response.data.coordinates;
+  celsius = response.data.temperature.current;
   document.querySelector("#temp").innerHTML = Math.round(
     response.data.temperature.current
   );
@@ -40,7 +42,22 @@ function DisplayTemp(response) {
   document
     .querySelector("#img")
     .setAttribute("src", response.data.condition.icon_url);
-  console.log(response);
+  let lon = coordinates.longitude;
+  let lat = coordinates.latitude;
+  let ApiKey = "082d3d02ffdb12f2fd9b259e2ced1d0d";
+  let ApiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${ApiKey}&units=metric`;
+  axios(ApiKey).then(displayForecast);
+  let days = ["Sun", "Mon", "Tue"];
+  let weatherForecast = document.querySelector(".weather-forecast");
+  let weatherFroecastHTML = "";
+  days.forEach(function (days) {
+    weatherFroecastHTML += `<div class="weatherColumn">
+  <div class="date">${days}</div>
+  <div class="weather-icon"><img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png" alt=""></div>
+  <div class="weather-max-min"><span class="maxTemp" > 18° </span>   <span class="minTemp">  12°</span></div>
+</div>`;
+  });
+  weatherForecast.innerHTML = weatherFroecastHTML;
 }
 
 function search(city) {
@@ -54,9 +71,11 @@ function search(city) {
 function submitHandler(event) {
   event.preventDefault();
   let searchedCity = document.querySelector("#searchInput").value;
-   
+
   search(searchedCity);
-  document.querySelector(".cityName").innerHTML = searchedCity ;
+  document.querySelector(".cityName").innerHTML = searchedCity;
 }
-let celsius = null ; 
+let celsius = null;
 document.querySelector("#searchForm").addEventListener("submit", submitHandler);
+
+search("tehran");
