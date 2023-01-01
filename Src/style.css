@@ -1,6 +1,10 @@
-body{
-    background-color: rgba(195, 222, 231, 0.747);
+body {
+    text-align: center;
+    background: rgb(148, 215, 245);
+    background: linear-gradient(45deg, rgba(148, 215, 245, 0.8) 0%, rgba(80, 86, 245, 0.7987788865546218) 100%);
+    background-attachment: fixed;
 }
+
 .container {
     border-radius: 5px;
     background-color: white;
@@ -20,19 +24,21 @@ body{
 }
 
 .cityName {
- text-transform: capitalize;
+    text-transform: capitalize;
     font-family: 'Merriweather', serif;
     font-style: italic;
     font-size: 38px;
     font-weight: 700;
 }
+
 .tempreture {
-    font-family: 'Merriweather' , serif;
+    font-family: 'Merriweather', serif;
     font-style: normal;
     font-size: 80px;
     font-weight: 500;
 }
-.unit{
+
+.unit {
     color: #212121;
     font-size: 28px;
     font-weight: 400;
@@ -41,11 +47,24 @@ body{
     position: relative;
     top: -34px;
 }
-.header .searchBox {
-    width: 40vw;
+form{
+    margin-top: 20px;
 }
-.cityInfo ul{
- list-style: none;
+.header .searchBox {
+
+    width: 36vw;
+    padding:8px;
+    border-radius: 6px;
+    border-color: grey;
+}
+.header .searchBox::selection{
+    border-color: black;
+}
+.header .btn {
+    width: 7vw ;
+}
+.cityInfo ul {
+    list-style: none;
 }
 
 .todayWeather {
@@ -55,28 +74,49 @@ body{
     padding: 2%;
 
 }
-.cityInfo ul li #day,#hour,#minute {
-    font-size: 1.5rem;
-    font-weight: 300;
+.cityName {
+    text-align:center;
+    margin: 10px;
 }
 
-#img{
+.cityInfo ul li #day,
+#hour,
+#minute {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 300;
+    
+}
+.cityInfo{
+    margin-top: 15px;
+}
+.cityInfo ul li {
+    text-align: right;
+    color: grey;
+    line-height: 35px;
+}
+
+#img {
     position: relative;
     top: -20px;
 }
-.weather-forecast{
+
+.weather-forecast {
     display: flex;
     justify-content: space-evenly;
     margin: 0 10px;
 }
+
 .weatherColumn {
     display: flexbox;
     text-align: center;
 }
+
 .weatherColumn img {
     width: 5rem;
 }
-.date{
+
+.date {
     text-transform: capitalize;
     font-size: 1rem;
     font-weight: 600;

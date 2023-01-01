@@ -1,7 +1,7 @@
 let Days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Friday", "Satuday"];
 let date = new Date();
 let CurrentDay = date.getDay();
-document.querySelector("#day").innerHTML = Days[CurrentDay];
+document.querySelector("#day").innerHTML = `${Days[CurrentDay]}   `;
 let hours = date.getHours();
 if (hours < 10) {
   hours = `0${hours}`;
@@ -9,19 +9,10 @@ if (hours < 10) {
 document.querySelector("#hour").innerHTML = hours + ":";
 let minutes = date.getMinutes();
 if (minutes < 10) {
-  minutes = "0" + minutes;
+  minutes = `0${minutes}`;
 }
-document.querySelector("#minute").innerHTML = date.getMinutes();
-function convertToF() {
-  let F = (celsius * 9) / 5 + 32;
-  document.querySelector("#temp").innerHTML = Math.round(F);
-}
-function convertToC() {
-  document.querySelector("#temp").innerHTML = Math.round(celsius);
-}
+document.querySelector("#minute").innerHTML = minutes;
 
-document.querySelector("#F").addEventListener("click", convertToF);
-document.querySelector("#C").addEventListener("click", convertToC);
 function updateForecast(response) {
   console.log(response.data.daily);
   let forecastDay = response.data.daily;

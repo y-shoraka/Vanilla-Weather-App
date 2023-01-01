@@ -29,27 +29,32 @@
         <input  class="searchBox" type="text" name="" id="searchInput" placeholder="search the city here" />
         <input  type="submit" value="search" class="btn btn-primary"></input>
       </form>
+      
       <div class="todayWeather">
+        
         <div class="clmn1">
           <h1 class="cityName">Tehran</h1>
+          <img id="img" src="#" alt="description" /> <span class="tempreture" id="temp">11</span>
+          <span class="unit"> °C  </span>
+        </div>
+
+        <div class="clmn2">
+          
           <div class="cityInfo">
             <ul>
               <li> <span id="day">Sunday</span>  <span id="hour">13</span>  <span id="minute"></span> </li>
               <li id="description">few clouds</li>
-              <li>Humidity: <span id="humidity"></span>, <span id="wind">Wind: 2.24km/h</span> </li>
+              <li>Humidity: <span id="humidity"></span><div id="wind">Wind: 2.24km/h</div> </li>
             </ul>
           </div>
-        </div>
-        <div class="clmn2">
-          <img id="img" src="#" alt="description" /> <span class="tempreture" id="temp">11</span>
-          <span class="unit"> <a id="C" href="#">°C</a>  | <a  id="F" href="#">°F</a>  </span>
         </div>
       </div>
       <div class="weather-forecast">
         
       </div>
-      <small> <a href="https://github.com/y-shoraka/Vanilla-Weather-App.git">open-source </a> coded by Yasaman shoraka</small>
+      
     </div>
+    <small> <a href="https://github.com/y-shoraka/Vanilla-Weather-App.git">open-source </a> coded by Yasaman shoraka</small>
     
   </body>
   <script src="Src/index.js"></script>
